@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    stream:
+      # fail application start-up, if binding fails, e.g. due to wrong topic or permissions
+      bindingRetryInterval: 0
+      bindings:
+        input:
+          destination: ${storage.notification.topic}
+      gcp:
+        pubsub:
+          default:
+            consumer:
+              # do not create any topics/subscriptions automatically
+              auto-create-resources: false
